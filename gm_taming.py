@@ -31,7 +31,7 @@ def tame(followers, animalSerial):
             
             Misc.SendMessage("Macro Loop Running")
             Misc.Pause(1000)
-            if animalMobile.WarMode == True:
+            if animalMobile.WarMode == True and peacemakingEbabled == True:
                 peacemaking(animalSerial)
                 Misc.Pause( 9000 )
                 Player.UseSkill("Animal Taming")
@@ -78,11 +78,11 @@ def peacemaking(animalSerial):
 Player.HeadMessage(50, "Select Creature to Tame.") 
 
 wait = Misc.Pause( 500 )
-
+peacemakingEbabled = True # Set false if you do not one to use peacemaking during tames. 
 animalMobile = animaltarget()
 animalSerial = animalMobile.Serial
 
-if animalMobile.WarMode == True:
+if animalMobile.WarMode == True and peacemakingEbabled == True:
     peacemaking(animalSerial)
     Misc.Pause( 9000 )
     
@@ -91,7 +91,7 @@ if animalMobile.WarMode == True:
 followers = CurrentFollowers = Player.Followers
 currentTaming = Player.GetRealSkillValue('AnimalTaming')
 currentLore = Player.GetRealSkillValue('AnimalLore')
-renameAnimal = (Player.Name)
+renameAnimal = (Player.Name)  # Can change to to name the animal after your character
 
 tame(followers, animalSerial)
 
@@ -114,3 +114,6 @@ loreDifference = str(newLore - currentLore)
 loreTruncated = str(loreDifference[0:3])
 if newLore - currentLore > 0.1:
     Player.HeadMessage(75, 'Lore Gain: ' + (loreTruncated))
+
+Gumps.WaitForGump(949095101, 10000)
+Gumps.SendAction(949095101, 21)

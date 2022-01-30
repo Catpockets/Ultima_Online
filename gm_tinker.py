@@ -1,18 +1,27 @@
-Def setitems()
-    bag = Items.FindBySerial(Target.PromptTarget('Select Bag of Tools',150))
-    Misc.SendMessage(bag.Name)
-    tool = Items.FindBySerial(Target.PromptTarget('Select Tool',150))
-    container = bag.Contains
-    containerCount = Items.ContainerCount(bag.Serial,tool.ItemID)
+### Author : Catpockets ###
+### This script loops through player main backpack to find all Tinker Tools and loops through make last function
 
-# Def makelockpicks()
-#     Misc.SendMessage('Tools Left: '+str(containerCount))
-#     containerCount = containerCount
-#     Items.UseItem(seriallist[i])
-#     Misc.SendMessage(item)
-#     Misc.Pause( 200 )
-#     Gumps.WaitForGump(949095101, 10000)
-#     Gumps.SendAction(949095101, 21)
-#     Misc.Pause ( 1100 )   
+def findTinker():
+    tinker = [7864, 7868]
+    tinkerList = []
+    for item in Player.Backpack.Contains:
+        if item.ItemID in tinker:
+            tinkerList.append(item.Serial)
+    return tinkerList
+
     
-setitems()
+tinker = findTinker()
+Misc.SendMessage(len(tinker))
+for item in tinker:
+    Items.UseItem(item)
+    Misc.Pause( 1500 )
+    if len(tinker) < 2:
+        Misc.SendMessage('Making Tinker Tools')
+        Gumps.WaitForGump(949095101, 10000)
+        Gumps.SendAction(949095101, 23)
+    else:
+        Misc.SendMessage('Making Lock Picks')
+        Gumps.WaitForGump(949095101, 10000)
+        Gumps.SendAction(949095101, 121)
+            
+            
