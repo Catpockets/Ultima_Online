@@ -51,6 +51,7 @@ def findinstrument():
         Drum = 3740
         LapHarp = 3762
         Tamborine = 3741
+        BambooFlute = 10245
 
     playerBackPack = Items.FindBySerial( Player.Backpack.Serial )
 
