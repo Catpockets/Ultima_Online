@@ -26,8 +26,8 @@ blacklist = []
 # Loop through list and push data to party chat. 
 for i in data:
     if i not in list:
-        Player.ChatParty(i)
+        Player.ChatGuilde(i)
     if i in blacklist:
-        Player.ChatParty("***" + str(i) + "***")
+        Player.ChatGuild("***" + str(i) + "***")
 
 Misc.Pause( 10200 )
