@@ -1,6 +1,7 @@
-########################
-### Writen by Ridian ###
-########################
+###########################
+### Writen by Ridian    ###
+### Funded by Sindarwin ###
+###########################
 
 # This script will use the tracking skill to see if anyone is approaching. If it picks up something, it will
 # then spam the names of characters to party to work as an alarm. According to Tony on discord, this does not count as 
